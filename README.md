@@ -7,12 +7,13 @@
 ## 就業Termの技術
 - devise
 - お気に入り機能 
+- rails_admin
+- rails_admin
 
 ## カリキュラム外の技術
-- cancancan
-- rails_admin
 - geocoder
 - ransack
+- Active Storage
 
 ## 実行手順
 ```
