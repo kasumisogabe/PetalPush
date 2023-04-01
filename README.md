@@ -8,7 +8,7 @@
 - devise
 - お気に入り機能 
 - rails_admin
-- rails_admin
+- cancancan
 
 ## カリキュラム外の技術
 - geocoder
@@ -20,6 +20,7 @@
 $git clone git@github.com:kasumisogabe/PetalPush.git
 $cd PetalPush
 $bundle install
+$yarn install
 $rails db:create && rails db:migrate
 $rails s
 ```
