@@ -19,6 +19,9 @@
       <tr>
         <td><%= flower.name %></td>
         <td><%= flower.description %></td>
+        <td><% if flower.image.attached? %>
+          <%= image_tag flower.image.variant(resize_to_limit: [200, 200]) %>
+        <% end %></td>
         <td><%= link_to 'Show', flower %></td>
         <td><%= link_to 'Edit', edit_flower_path(flower) %></td>
         <td><%= link_to 'Destroy', flower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
