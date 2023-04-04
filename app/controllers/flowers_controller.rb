@@ -1,5 +1,6 @@
 class FlowersController < ApplicationController
   before_action :set_flower, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   # GET /flowers or /flowers.json
   def index
