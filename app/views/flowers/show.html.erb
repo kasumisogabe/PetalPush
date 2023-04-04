@@ -1,6 +1,6 @@
 <p>
   <strong>UserName:</strong>
-  <%= @flower.user_id %>
+  <%= @flower.favorite_users.name %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Fav:</strong>
-  <% unless @flower.user_id == current_user %>
+  <% unless @flower.favorite_users == current_user %>
     <% if @favorite.present? %>
       <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
     <% else %>
