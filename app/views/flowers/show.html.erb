@@ -10,6 +10,9 @@
 
 <p>
   <strong>Image:</strong>
+  <% if @flower.image.attached? %>
+    <%= image_tag @flower.image.variant(resize_to_limit: [200, 200]) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_flower_path(@flower) %> |
