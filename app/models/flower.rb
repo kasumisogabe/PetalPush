@@ -1,4 +1,7 @@
 class Flower < ApplicationRecord
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
+
   has_one_attached :image
 
   def self.ransackable_attributes(auth_object = nil)

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :flowers
+  resources :favorites, only: [:create, :destroy]
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
