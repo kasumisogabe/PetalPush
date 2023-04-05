@@ -6,6 +6,7 @@ class FlowersController < ApplicationController
   def index
     @q = Flower.ransack(params[:q])
     @flowers = @q.result(distinct: true).order("created_at desc")
+    @flowers = Flower.all
   end
 
   # GET /flowers/1 or /flowers/1.json
