@@ -12,7 +12,7 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= link_to "ブログ投稿", flowers_path %>
+      <%= link_to "ユーザ", user_path(current_user.id) %>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li><%= link_to 'ログイン', new_user_session_path %></li>
