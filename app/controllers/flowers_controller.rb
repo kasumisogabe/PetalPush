@@ -6,10 +6,12 @@ class FlowersController < ApplicationController
   def index
     @q = Flower.ransack(params[:q])
     @flowers = @q.result(distinct: true).order("created_at desc")
+    @flowers = Flower.all
   end
 
   # GET /flowers/1 or /flowers/1.json
   def show
+    @favorite = current_user.favorites.find_by(flower_id: @flower.id)
   end
 
   # GET /flowers/new
@@ -23,16 +25,12 @@ class FlowersController < ApplicationController
 
   # POST /flowers or /flowers.json
   def create
-    @flower = Flower.new(flower_params)
-
-    respond_to do |format|
-      if @flower.save
-        format.html { redirect_to flower_url(@flower), notice: "Flower was successfully created." }
-        format.json { render :show, status: :created, location: @flower }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @flower.errors, status: :unprocessable_entity }
-      end
+    @flower = current_user.flowers.build(flower_params)
+    return render :new if params[:back]
+    if @flower.save
+      redirect_to flowers_path, notice: '画像を投稿しました'
+    else
+      render :new
     end
   end
 
