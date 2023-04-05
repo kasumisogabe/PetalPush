@@ -1,6 +1,8 @@
 class Flower < ApplicationRecord
+  belongs_to :user
   has_many :favorites, dependent: :destroy
-  has_many :favorite_users, through: :favorites, source: :user
+  has_many :favorite_users, through: :favorites, source: :user, dependent: :destroy
+  #flowerをお気に入りした人の情報を取得する
 
   has_one_attached :image
 
