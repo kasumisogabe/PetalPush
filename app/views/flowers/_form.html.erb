@@ -26,10 +26,9 @@
     <%= form.file_field :image %><br>
   </div>
 
-  <div class="field my-3">
+  <div class="field">
     <%= form.label :address %>
     <%= form.text_field :address %>
-    <input type="button" value="住所入力">
   </div>
 
   <div id="map"></div>
@@ -68,7 +67,6 @@
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-
 
   <div class="actions">
     <%= form.submit %>
