@@ -7,6 +7,7 @@ class FlowersController < ApplicationController
     @q = Flower.ransack(params[:q])
     @flowers = @q.result(distinct: true).order("created_at desc")
     @flowers = Flower.all
+    gon.flowers = @flowers
   end
 
   # GET /flowers/1 or /flowers/1.json
@@ -65,6 +66,6 @@ class FlowersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def flower_params
-      params.require(:flower).permit(:name, :description, :image)
+      params.require(:flower).permit(:name, :description, :image, :address, :latitude, :longitude)
     end
 end

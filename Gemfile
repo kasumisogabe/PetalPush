@@ -18,6 +18,10 @@ gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
 gem 'image_processing'
 gem 'ransack'
+gem 'dotenv-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem "gon"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
