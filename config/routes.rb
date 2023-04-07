@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'flowers#index'
 
   devise_for :users
-  resources :flowers
+  resources :flowers do
+    resources :comments
+  end
   resources :favorites, only: [:index, :create, :destroy]
   resources :users, only: [:show, :edit, :update] do
     get :favorites, on: :collection

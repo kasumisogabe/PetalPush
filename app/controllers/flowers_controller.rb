@@ -12,6 +12,8 @@ class FlowersController < ApplicationController
 
   # GET /flowers/1 or /flowers/1.json
   def show
+    @comments = @flower.comments
+    @comment = @flower.comments.build
     @favorite = current_user.favorites.find_by(flower_id: @flower.id)
   end
 
