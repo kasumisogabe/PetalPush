@@ -21,98 +21,97 @@
       </style>
       <script>
 
-    let map;
-    let marker = [];
-    let infoWindow = [];
-    let markerData = gon.flowers; // コントローラーで定義したインスタンス変数(@flowers)を代入
-
-    function initMap() {
-  
-      // マップの初期化
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: {lat: 35.4550426, lng: 139.6312741}
-      });
-
-      // これだと世界地図が表示される
-      // function initMap() {
-        // geocoder = new google.maps.Geocoder() 
-
-      // var mapLatLng = new google.maps.LatLng({lat: markerData[0]['latitude'], lng: markerData[0]['longitude']});
-      // map = new google.maps.Map(document.getElementById('map'), {
-      //   center: mapLatLng, 
-      //   zoom: 13,
-      //   // scrollwheel: true,
-      // });
-
-      // @flowersの数だけ繰り返し処理を行い、マーカーと吹き出しを複数表示させる
-      for (var i = 0; i < markerData.length; i++) {
-        let id = markerData[i]['id']
-
-        // 各スポットの緯度経度を算出
-        markerLatLng = new google.maps.LatLng({
-          lat: markerData[i]['latitude'],
-          lng: markerData[i]['longitude']
-        });
-
-        // 各スポットのマーカーを作成
-        marker[i] = new google.maps.Marker({
-          position: markerLatLng,
-          map: map
-        });
-        
-        // 各スポットの吹き出しを作成
-        infoWindow[i] = new google.maps.InfoWindow({
-          // 吹き出しの内容
-          content: `<a href='/flowers/${ id }'>${ markerData[i]['name'] }</a>`
-        });
-        
-        // マーカーにクリックイベント追加
-        markerEvent(i);
-      }
-      map_adjust();
-    }
-
-    // マーカーをクリックしたら吹き出しを表示
-    function markerEvent(i) {
-      marker[i].addListener('click', function () {
-        infoWindow[i].open(map, marker[i]);
-      });
+      let map;
+      let marker = [];
+      let infoWindow = [];
+      // コントローラーで定義したインスタンス変数(@flowers)を代入
+      let markerData = gon.flowers; 
       
-    }
+      
 
-    function map_adjust(){
-      var latMin = 90;  //緯度は-90～90の値
-      var latMax = -90;
-      var lngMin = 180;  //経度は-180～180の値
-      var lngMax = -180;
+      function initMap() {
+        // マップの初期化
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: {lat: 35.4550426, lng: 139.6312741}
+        });
 
-      if (markerData.length == 1){
+        // @flowersの数だけ繰り返し処理を行い、マーカーと吹き出しを複数表示させる
+        for (var i = 0; i < markerData.length; i++) {
+          console.log(i);
+          let id = markerData[i]['id']
+          
+          // 各スポットの緯度経度を算出
+          console.log(markerData[i]['latitude']);
+          markerLatLng = new google.maps.LatLng({
+            lat: markerData[i]['latitude'],
+            lng: markerData[i]['longitude']
+          });
+
+          // 各スポットのマーカーを作成
+          console.log("!");
+          marker[i] = new google.maps.Marker({
+            position: markerLatLng,
+            map: map
+          });
+          
+          // 各スポットの吹き出しを作成
+          infoWindow[i] = new google.maps.InfoWindow({
+            // 吹き出しの内容
+            content: `<a href='/flowers/${ id }'>${ markerData[i]['name'] }</a>`
+          });
+          
+          // マーカーにクリックイベント追加
+          markerEvent(i);
+        }
+        map_adjust();
+      }
+
+      // マーカーをクリックしたら吹き出しを表示
+      function markerEvent(i) {
+        marker[i].addListener('click', function () {
+          infoWindow[i].open(map, marker[i]);
+        });
+        
+      }
+
+      function map_adjust(){
+        var latMin = 90;  //緯度は-90～90の値
+        var latMax = -90;
+        var lngMin = 180;  //経度は-180～180の値
+        var lngMax = -180;
+
+        if (markerData.length == 1){
           map = new google.maps.Map(document.getElementById('map'), {
             center: {
               lat: gon.flower.latitude,
               lng: gon.flower.longitude
             },
           });
+          console.log(gon.flower.latitude);
 
         }else{
+          console.log("else");
           for (var i = 0; i < markerData.length; i++) {
             var thisLat = markerData[i]['latitude'];
+            console.log(markerData[i]['latitude']);
             var thisLng = markerData[i]['longitude'];
+            console.log(markerData[i]['longitude']);
             latMin = Math.min(latMin, thisLat);  //最小経度
             latMax = Math.max(latMax, thisLat);  //最大経度
             lngMin = Math.min(lngMin, thisLng);  //最小緯度
             lngMax = Math.max(lngMax, thisLng);  //最大緯度
-            
+              
             var min = new google.maps.LatLng(latMin, lngMin);  //最小緯度経度（南西）
+            console.log(latMin);
             var max = new google.maps.LatLng(latMax, lngMax);  //最大緯度経度（北東）
             var latLngBounds = new google.maps.LatLngBounds(min, max);
-            map.fitBounds(latLngBounds);  //マーカーが全て地図に収まるように調整
+            //マーカーが全て地図に収まるように調整
+            // map.fitBounds(latLngBounds);  
           }
         }
       }
-    
-  </script>
+      </script>
 
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
       </td>
