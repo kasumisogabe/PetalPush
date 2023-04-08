@@ -11,16 +11,14 @@
 
 <table>
   <thead>
-    <td>
       <div id='map'></div>
       <style>
         #map {
-          height: 300px;
-          width: 300px;
+          height: 500px;
+          width: 1500px;
         }
       </style>
       <script>
-
       let map;
       let marker = [];
       let infoWindow = [];
@@ -30,22 +28,19 @@
       function initMap() {
         // マップの初期化
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
+          zoom: 10,
           center: {lat: 35.4550426, lng: 139.6312741}
         });
 
         // @flowersの数だけ繰り返し処理を行い、マーカーと吹き出しを複数表示させる
         for (var i = 0; i < markerData.length; i++) {
-          console.log(i);
           let id = markerData[i]['id']
           
           // 各スポットの緯度経度を算出
-          console.log(markerData[i]['latitude']);
           markerLatLng = new google.maps.LatLng({
             lat:  Number(markerData[i]['latitude']),
             lng:  Number(markerData[i]['longitude'])
           });
-          console.log(typeof markerData[i]['latitude']);
 
           // 各スポットのマーカーを作成
           marker[i] = new google.maps.Marker({
@@ -88,7 +83,6 @@
           });
 
         }else{
-          console.log("else");
           for (var i = 0; i < markerData.length; i++) {
             var thisLat = markerData[i]['latitude'];
             var thisLng = markerData[i]['longitude'];
@@ -108,7 +102,7 @@
       </script>
 
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-      </td>
+      
     <tr>
       <th>投稿者</th>
       <th>Name</th>
