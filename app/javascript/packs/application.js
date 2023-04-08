@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'bootstrap';
 import '../stylesheets/application';
+import '../stylesheets/flower';
 
 Rails.start()
 Turbolinks.start()

@@ -12,20 +12,29 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'ログイン', new_user_session_path %>
-      <%= link_to 'サインアップ', new_user_registration_path %>
-    <% end %>
+    <header class ="header">
+      <% if user_signed_in? %>
+        <%= link_to "マイページ", user_path(current_user.id) %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'ログイン', new_user_session_path %>
+        <%= link_to 'サインアップ', new_user_registration_path %>
+      <% end %>
 
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
+    </header>
+
+    <div class="content">
     <%= yield %>
+    </div>
+
+    <footer class ="footer">
+      <p><a href="#"</a>PetalPush</p>
+    </footer>
   </body>
 </html>
