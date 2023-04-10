@@ -13,32 +13,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="form-container">
+    <div class="field">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-input" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="field">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-input" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :image, 'Image' %>
-    <%= form.file_field :image %><br>
-  </div>
+    <div class="field">
+      <%= form.label :image, 'Image', class: "form-label" %>
+      <%= form.file_field :image, class: "form-input" %><br>
+    </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+    <div class="field">
+      <%= form.label :address, class: "form-label" %>
+      <%= form.text_field :address, class: "form-input" %>
+    </div>
 
   <div class="content">
   <div id="map"></div>
   <style>
         #map {
-          height: 200px;
-          width: 200px;
+          height: 300px;
+          width: 300px;
         }
       </style>
       <script>
@@ -71,9 +72,9 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     
-  <div class="actions">
-    <%= form.submit "登録", class: "btn btn-primary" %>
-  </div>
+    <div class="actions">
+      <%= form.submit "登録", class: "submit-button" %>
+    </div>
   </div>
 
 <% end %>
