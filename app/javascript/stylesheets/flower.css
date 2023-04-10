@@ -1,15 +1,16 @@
 html {
-  font-size: 100%;
+  font-size: 80%;
   height: 200%;
 }
 
 body {
   height: 100%;
+  font-family:  "ヒラギノ角ゴ ProN W3"
 }
 
 .header {
   background-color: #FFD4D4;
-  height: 80px;
+  height: 60px;
   font-size: 1rem;
   display: table;
   width: 100%;
@@ -17,12 +18,22 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .content {
+  padding-top: 60px;
+  padding-bottom: 40px;
   text-align:center;
   background-color: #FFFFE8;
   height: 100%;
+  z-index: 0;
+}
+
+.form-control {
+  width: 50%;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 #map {
@@ -31,7 +42,7 @@ body {
 
 .footer {
   background-color: #CDE990;
-  height: 80px;
+  height: 20px;
   width: 100%;
   position: fixed;
   bottom: 0;

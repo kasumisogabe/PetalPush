@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <header class ="header">
       <% if user_signed_in? %>
         <%= link_to "マイページ", user_path(current_user.id) %>

@@ -11,7 +11,7 @@ class Flower < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[name description]
+    %w[name description address]
   end
 
   def self.ransackable_associations(auth_object = nil)

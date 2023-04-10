@@ -7,6 +7,7 @@
   <h1>Flowers</h1>
 <% end %>
 
+<%= link_to 'New Flower', new_flower_path %>
 <%= render 'search', q: @q, url: flowers_path %>
 
 <table>
@@ -100,9 +101,7 @@
         }
       }
       </script>
-
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-      
     <tr>
       <th>投稿者</th>
       <th>Name</th>
@@ -126,9 +125,7 @@
         <td><%= link_to 'Destroy', flower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
+  
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Flower', new_flower_path %>
