@@ -16,8 +16,8 @@
     <header class ="header">
       <div class ="header-icon">
       <% if user_signed_in? %>
-        <%= link_to '<i class="fa-solid fa-house" style="color: #ef61c2;"></i>'.html_safe, user_path(current_user.id) %>
-        <%= link_to '<i class="fa-solid fa-right-from-bracket" style="color: #ef61c2;"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+        <%= link_to '<i class="fa-solid fa-house" style="color: #FFA6A6;"></i>'.html_safe, user_path(current_user.id) %>
+        <%= link_to '<i class="fa-solid fa-right-from-bracket" style="color: #FFA6A6;"></i>'.html_safe, destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'ログイン', new_user_session_path %>
         <%= link_to 'サインアップ', new_user_registration_path %>
