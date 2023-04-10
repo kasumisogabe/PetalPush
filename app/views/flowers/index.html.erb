@@ -3,10 +3,10 @@
 <% if current_user.try(:admin?) %>
   <h1>管理者ページ</h1>
 <% else %>
-  <h1>お花一覧</h1>
+  <h1>花一覧</h1>
 <% end %>
 
-<%= link_to 'お花を投稿する', new_flower_path %>
+<%= link_to '花を投稿する', new_flower_path, class: "submit-button" %>
 <%= render 'search', q: @q, url: flowers_path %>
 
 <table>
