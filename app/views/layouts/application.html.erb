@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <title>PetalPush</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -12,15 +13,16 @@
   </head>
 
   <body>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <header class ="header">
+      <div class ="header-icon">
       <% if user_signed_in? %>
-        <%= link_to "マイページ", user_path(current_user.id) %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <%= link_to '<i class="fa-solid fa-house" style="color: #ef61c2;"></i>'.html_safe, user_path(current_user.id) %>
+        <%= link_to '<i class="fa-solid fa-right-from-bracket" style="color: #ef61c2;"></i>'.html_safe, destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'ログイン', new_user_session_path %>
         <%= link_to 'サインアップ', new_user_registration_path %>
       <% end %>
+      
 
       <% if notice %>
         <p class="alert alert-notice"><%= notice %></p>
