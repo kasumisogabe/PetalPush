@@ -218,6 +218,45 @@ body {
   text-decoration: none;
   color: white;
 }
+/* 
+.comment-form .field {
+  margin-bottom: 20px;
+}
+
+.comment-form .field label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.comment-form .field textarea {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+} */
+
+.comment-form .actions input[type="submit"] {
+  background-color: #FFA6A6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.comment-form .actions input[type="submit"]:hover {
+  background-color: #FF8B8B;
+  text-decoration: none;
+  color: white;
+}
 
 .footer {
   background-color: #CDE990;
