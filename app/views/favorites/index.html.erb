@@ -1,25 +1,20 @@
-<table>
-  <thead>
-    <tr>
-      <th>UserName</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <body>
-  <ul>
+<div class="grid-container">
   <% @favorites.each do |favorite| %>
-    <tr>
-      <td><%= favorite.user.name %></td>
-      <td><%= favorite.name %></td>
-      <td><%= favorite.description %></td>
-      <td><% if favorite.image.attached? %>
-        <%= image_tag favorite.image.variant(resize_to_limit: [200, 200]) %>
-      <% end %></td>
-    </tr>
+    <div class="grid-item">
+      <% if favorite.image.attached? %>
+        <%= image_tag favorite.image.variant(resize_and_pad: [200, 200]), class: "flower-image" %>
+      <% end %>
+      <div class="image-info">
+        <div class="user-name"><%= favorite.user.name %></div>
+        <div class="flower-name"><%= favorite.name %></div>
+        <div class="flower-description"><%= favorite.description %></div>
+      </div>
+      <div class="actions">
+          <%= link_to 'Show', favorite %>
+      </div>
+    </div>
   <% end %>
-  </ul>
-  </body>
-</table>
+</div>
+
+<%= link_to 'ホーム画面へ', user_path(current_user), class: "submit-button" %>
+<%= link_to '一覧画面へ', flowers_path, class: "submit-button" %>
