@@ -219,6 +219,22 @@ body {
   color: white;
 }
 
+.detail-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 共通のスタイルを適用するために、.grid-itemを.detail-itemに変更 */
+.detail-item {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 .comment-form .actions input[type="submit"] {
   background-color: #FFA6A6;
   border: none;

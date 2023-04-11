@@ -1,29 +1,27 @@
 <%= stylesheet_link_tag 'flowers' %>
 
-<p>
-  <strong>UserName:</strong>
-  <%= @flower.favorite_users.name %>
-</p>
+<div class="detail-container">
+  <div class="detail-item">
+    <div class="image-info">
+      <div class="user-name">
+        <%= @flower.favorite_users.name %>
+      </div>
 
-<p>
-  <strong>Name:</strong>
+<div class="flower-name">
   <%= @flower.name %>
-</p>
+</div>
 
-<p>
-  <strong>Description:</strong>
+<div class="flower-name">
   <%= @flower.description %>
-</p>
+</div>
 
-<p>
-  <strong>Image:</strong>
+<div class="flower-name">
   <% if @flower.image.attached? %>
     <%= image_tag @flower.image.variant(resize_to_limit: [200, 200]) %>
   <% end %>
-</p>
+</div>
 
-<p>
-<strong>Map:</strong>
+<div class="flower-name">
   <script type="text/javascript">
     function initMap() {
       var test = {lat: <%= @flower.latitude %>, lng: <%= @flower.longitude %>};
@@ -55,10 +53,9 @@
     }
   </style>
   <div id="map"></div>
-</p>
+</div>
 
-<p>
-  <strong>Fav:</strong>
+<div class="flower-name">
   <% unless @flower.favorite_users == current_user %>
     <% if @favorite.present? %>
       <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -66,7 +63,8 @@
       <%= link_to 'お気に入り登録する', favorites_path(flower_id: @flower.id), method: :post, class: 'btn btn-primary' %>
     <% end %>
   <% end %>
-</p>
+</div>
+</div>
 
 <p>コメント一覧</p>
 
@@ -78,5 +76,7 @@
 
   <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
   <%= render partial: 'comments/form', locals: { comment: @comment, flower: @flower } %>
+  </div>
+</div>
 
 <%= link_to 'Back', flowers_path, class: 'back-link' %>
