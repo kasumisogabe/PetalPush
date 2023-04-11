@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag 'users' %>
-
 <div class="detail-container">
   <div class="detail-item">
     <div class="image-info">
@@ -8,10 +6,10 @@
       <p>メールアドレス: <%= @user.email %></p>
 
       <div class="actions">
-        <%= link_to "一覧画面へ", flowers_path, class: "submit-button" %>
-        <%= link_to 'お気に入り一覧', favorites_path, class: "submit-button" %>
+        <%= link_to "一覧画面へ", flowers_path, class: "submit-button submit-button-white" %>
+        <%= link_to 'お気に入り一覧', favorites_path, class: "submit-button submit-button-white" %>
         <% if @user == current_user %>
-          <%= link_to "プロフィールの編集", edit_user_path, class: "submit-button" %>
+          <%= link_to "プロフィールの編集", edit_user_path, class: "submit-button submit-button-white" %>
         <% end %>
       </div>
     </div>
