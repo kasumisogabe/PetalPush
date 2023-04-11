@@ -1,6 +1,8 @@
-<h1>Editing Flower</h1>
+<%= stylesheet_link_tag 'flowers' %>
+
+<h1>投稿の編集</h1>
 
 <%= render 'form', flower: @flower %>
 
-<%= link_to 'Show', @flower %> |
-<%= link_to 'Back', flowers_path %>
+<%= link_to 'Show', @flower, class: 'back-link' %>
+<%= link_to 'Back', flowers_path, class: 'back-link' %>

@@ -1,0 +1,265 @@
+html {
+  font-size: 80%;
+  height: 200%;
+}
+
+body {
+  height: 100%;
+  font-family:  "ヒラギノ角ゴ ProN W3"
+}
+
+.header {
+  background-color: #FFD4D4;
+  height: 60px;
+  font-size: 2rem;
+  display: table;
+  width: 100%;
+  text-align: right;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.header-icon {
+  margin: 10px 20px;
+}
+
+.content {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  text-align:center;
+  background-color: #FFFFE8;
+  height: 100%;
+  z-index: 0;
+}
+
+.submit-button {
+  background-color: #FFA6A6;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.submit-button:hover {
+  background-color: #FF8B8B;
+}
+
+.form-control {
+  width: 35%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.search-button {
+  background-color: #FFA6A6;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.search-button:hover {
+  background-color: #FF8B8B;
+  text-decoration: none;
+  color: white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 各画像コンテナ */
+.grid-item {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* 画像 */
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 詳細情報 */
+.image-info {
+  padding: 15px;
+}
+
+/* 投稿者名 */
+.image-info .user-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 花の名前 */
+.image-info .flower-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* 花の説明 */
+.image-info .flower-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+/* 各アクションボタン */
+.actions a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* アクションボタンのホバーエフェクト */
+.actions a:hover {
+  color: #007bff;
+}
+
+/* ページネーションスタイル */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f1f1f1;
+}
+
+.pagination .current {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#map {
+  margin: 0 auto;
+}
+
+.form-container {
+  width: 35%;
+  margin: 0 auto;
+  background-color: #FFFFE8;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  background-color: #FFA6A6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #FF8B8B;
+  text-decoration: none;
+  color: white;
+}
+
+.detail-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 共通のスタイルを適用するために、.grid-itemを.detail-itemに変更 */
+.detail-item {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.comment-form .actions input[type="submit"] {
+  background-color: #FFA6A6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.comment-form .actions input[type="submit"]:hover {
+  background-color: #FF8B8B;
+  text-decoration: none;
+  color: white;
+}
+
+.footer {
+  background-color: #CDE990;
+  height: 20px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: table;
+  text-align: center;
+}

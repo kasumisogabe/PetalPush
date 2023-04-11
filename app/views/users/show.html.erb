@@ -1,13 +1,17 @@
-<h1><%= @user.name %>のページ</h1>
+<div class="detail-container">
+  <div class="detail-item">
+    <div class="image-info">
+      <h1><%= @user.name %>さんのページ</h1>
 
-<p>メールアドレス: <%= @user.email %></p>
+      <p>メールアドレス: <%= @user.email %></p>
 
-
-
-<p>
-<%= link_to "画像一覧画面へ", flowers_path%>
-<%= link_to 'お気に入り一覧', favorites_path %><br>
-<% if @user == current_user %>
-  <%= link_to "プロフィールの編集", edit_user_path%>
-<% end %>
-</p>
+      <div class="actions">
+        <%= link_to "一覧画面へ", flowers_path, class: "submit-button submit-button-white" %>
+        <%= link_to 'お気に入り一覧', favorites_path, class: "submit-button submit-button-white" %>
+        <% if @user == current_user %>
+          <%= link_to "プロフィールの編集", edit_user_path, class: "submit-button submit-button-white" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,82 +1,82 @@
-<p>
-  <strong>UserName:</strong>
-  <%= @flower.favorite_users.name %>
-</p>
+<%= stylesheet_link_tag 'flowers' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @flower.name %>
-</p>
+<div class="detail-container">
+  <div class="detail-item">
+    <div class="image-info">
+      <div class="user-name">
+        <%= @flower.user.name %>
+      </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @flower.description %>
-</p>
+      <div class="flower-name">
+        <%= @flower.name %>
+      </div>
 
-<p>
-  <strong>Image:</strong>
-  <% if @flower.image.attached? %>
-    <%= image_tag @flower.image.variant(resize_to_limit: [200, 200]) %>
-  <% end %>
-</p>
+      <div class="flower-name">
+        <%= @flower.description %>
+      </div>
 
-<p>
-<strong>Map:</strong>
-  <script type="text/javascript">
-    function initMap() {
-      var test = {lat: <%= @flower.latitude %>, lng: <%= @flower.longitude %>};
-      var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15, 
-                center: test
-                });
-      var transitLayer = new google.maps.TransitLayer();
-      transitLayer.setMap(map);
-      var contentString = '住所：<%= @flower.address %>';
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-      var marker = new google.maps.Marker({
-                    position:test,
-                    map: map,
-                    title: contentString
-                  });
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-      });
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-  <style type="text/css">
-    #map {
-      height: 200px;
-      width: 200px;
-    }
-  </style>
-  <div id="map"></div>
-</p>
+      <div class="flower-name">
+        <% if @flower.image.attached? %>
+          <%= image_tag @flower.image.variant(resize_to_limit: [200, 200]) %>
+        <% end %>
+      </div>
 
-<p>
-  <strong>Fav:</strong>
-  <% unless @flower.favorite_users == current_user %>
-    <% if @favorite.present? %>
-      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-    <% else %>
-      <%= link_to 'お気に入り登録する', favorites_path(flower_id: @flower.id), method: :post, class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
-</p>
+      <div class="flower-name">
+        <script type="text/javascript">
+          function initMap() {
+            var test = {lat: <%= @flower.latitude %>, lng: <%= @flower.longitude %>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 15, 
+                      center: test
+                      });
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+            var contentString = '住所：<%= @flower.address %>';
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+            var marker = new google.maps.Marker({
+                          position:test,
+                          map: map,
+                          title: contentString
+                        });
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+          }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+        <style type="text/css">
+          #map {
+            height: 200px;
+            width: 200px;
+          }
+        </style>
+        <div id="map"></div>
+      </div>
 
-<p>コメント一覧</p>
+      <div class="flower-name">
+        <% unless @flower.favorite_users == current_user %>
+          <% if @favorite.present? %>
+            <%= link_to '<i class="fa-solid fa-heart" style="color: #ffa6a6;"></i>'.html_safe, favorite_path(id: @favorite.id), method: :delete %>
+          <% else %>
+            <%= link_to '<i class="fa-regular fa-heart" style="color: #ffa6a6;"></i>'.html_safe, favorites_path(flower_id: @flower.id), method: :post %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-  <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
-  <div id="comments_area">
-    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-    <%= render partial: 'comments/index', locals: { comments: @comments, flower: @flower } %>
+    <p>コメント一覧</p>
+
+    <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+    <div id="comments_area">
+      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+      <%= render partial: 'comments/index', locals: { comments: @comments, flower: @flower } %>
+    </div>
+
+    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'comments/form', locals: { comment: @comment, flower: @flower } %>
   </div>
+</div>
 
-  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-  <%= render partial: 'comments/form', locals: { comment: @comment, flower: @flower } %>
-
-
-<%= link_to 'Edit', edit_flower_path(@flower) %> |
-<%= link_to 'Back', flowers_path %>
+<%= link_to 'Back', flowers_path, class: 'back-link' %>

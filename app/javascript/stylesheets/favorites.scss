@@ -1,0 +1,79 @@
+.favorites-container {
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favorites-container table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.favorites-container th,
+.favorites-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.favorites-container th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.favorites-container tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.favorites-container tr:hover {
+  background-color: #ddd;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.grid-item {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.flower-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.image-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.user-name,
+.flower-name,
+.flower-description {
+  margin: 5px 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
