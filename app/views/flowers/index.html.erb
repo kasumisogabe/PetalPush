@@ -114,6 +114,7 @@
             <div class="user-name"><%= flower.user.name %></div>
             <div class="flower-name"><%= flower.name %></div>
             <div class="flower-description"><%= flower.description %></div>
+            <div class="created-at"><%= time_ago_in_words(flower.created_at) %>前</div>
           </div>
           <div class="actions">
             <%= link_to 'Show', flower %>
