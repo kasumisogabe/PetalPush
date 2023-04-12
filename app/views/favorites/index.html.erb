@@ -8,6 +8,7 @@
         <div class="user-name"><%= favorite.user.name %></div>
         <div class="flower-name"><%= favorite.name %></div>
         <div class="flower-description"><%= favorite.description %></div>
+        <div class="created-at"><%= time_ago_in_words(favorite.created_at) %>前</div>
       </div>
       <div class="actions">
           <%= link_to 'Show', favorite %>
