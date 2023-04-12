@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
+  before_action :authenticate_user!
+  before_action :current_user, only: [:show, :edit, :update]
 
   def show
   end
@@ -31,7 +33,14 @@ class UsersController < ApplicationController
 
   private
 
-def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile_image)
-end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile_image)
+  end
+
+  def currect_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to root_path, alert: "アクセス権限がありません。"
+    end
+  end
 end
