@@ -34,47 +34,88 @@
       <%= form.text_field :address, class: "form-input" %>
     </div>
 
+    <div class="field">
+      <%= form.label :latitude %>
+      <%= form.number_field :latitude, step: 'any', id: 'lat' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :longitude %>
+      <%= form.number_field :longitude, step: 'any', id: 'lng' %>
+    </div>
+
   <div class="content">
   <div id="map"></div>
   <style>
-        #map {
-          height: 300px;
-          width: 300px;
-        }
-      </style>
-      <script>
-      function initMap() {
-  
-        // マップの初期化
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: {lat: 35.4550426, lng: 139.6312741}
-        });
-  
-        // クリックイベントを追加
-        map.addListener('click', function(e) {
-          getClickLatLng(e.latLng, map);
-        });
-      }
-  
-      function getClickLatLng(lat_lng, map) {
-  
-        // マーカーを設置
-        var marker = new google.maps.Marker({
-          position: lat_lng,
-          map: map
-        });
-  
-        // 座標の中心をずらす
-        // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
-        map.panTo(lat_lng);
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-    
-    <div class="actions">
-      <%= form.submit "登録", class: "submit-button" %>
-    </div>
-  </div>
+    #map {
+      height: 300px;
+      width: 300px;
+    }
+  </style>
+  <script>
+  let map;
+  let marker;
 
+  function initMap() {
+    const defaultCenter = { lat: 35.4550426, lng: 139.6312741 };
+    const mapOptions = {
+      zoom: 15,
+      center: defaultCenter,
+    };
+
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    map.addListener("click", function (e) {
+      getClickLatLng(e.latLng, map);
+    });
+
+    const addressField = document.getElementById("address");
+    const latHiddenField = document.getElementById("lat");
+    const lngHiddenField = document.getElementById("lng");
+    const service = new google.maps.places.PlacesService(map);
+
+    addressField.addEventListener("change", (e) => {
+      const address = e.target.value;
+      const request = {
+        query: address,
+        fields: ["name", "geometry"],
+      };
+      service.findPlaceFromQuery(request, function (results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (let i = 0; i < results.length; i++) {
+            const place = results[i];
+            const lat = place.geometry.location.lat();
+            const lng = place.geometry.location.lng();
+            const latLng = { lat: lat, lng: lng };
+            getClickLatLng(latLng, map);
+            latHiddenField.value = lat;
+            lngHiddenField.value = lng;
+          }
+        }
+      });
+    });
+  }
+
+  function getClickLatLng(latLng, map) {
+    if (marker) {
+      marker.setMap(null);
+    }
+
+    marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+    });
+
+    map.panTo(latLng);
+
+    document.getElementById("lat").value = latLng.lat();
+    document.getElementById("lng").value = latLng.lng();
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+    
+  <div class="actions">
+    <%= form.submit "登録", class: "submit-button" %>
+  </div>
+</div>
 <% end %>
