@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show]
-  before_action :ensure_correct_user, only: [:show, :edit, :update]
-  
+  before_action :set_user
+  before_action :ensure_correct_user
 
   def show
+    @flowers = @user.flowers
   end
 
   def edit
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      bypass_sign_in(@user) if params[:user][:password].present?
       redirect_to user_path(@user), notice: "プロフィールを編集しました！"
     else
       flash.now[:danger] = "プロフィールを更新できませんでした"
