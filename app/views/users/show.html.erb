@@ -10,6 +10,21 @@
         <% end %></p>
       <p>メールアドレス: <%= @user.email %></p>
 
+      <div class="grid-container">
+      <% @flowers.each do |flower| %>
+        <div class="grid-item">
+          <% if flower.image.attached? %>
+            <%= image_tag flower.image.variant(resize_and_pad: [200, 200]) %>
+          <% end %>
+          <div class="image-info">
+            <div class="flower-name"><%= flower.name %></div>
+            <div class="flower-description"><%= flower.description %></div>
+            <div class="created-at"><%= time_ago_in_words(flower.created_at) %>前</div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
       <div class="actions">
         <%= link_to "一覧画面へ", flowers_path, class: "submit-button submit-button-white" %>
         <%= link_to 'お気に入り一覧', favorites_path, class: "submit-button submit-button-white" %>

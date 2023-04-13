@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user
 
   def show
+    @flowers = @user.flowers
   end
 
   def edit
