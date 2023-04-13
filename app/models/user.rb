@@ -9,4 +9,12 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable, :confirmable
   
   validates :name, presence: true
+  validates :password, length: { minimum: 6 }, if: :password_required?, allow_blank: true
+  validates :password_confirmation, presence: true, if: :password_required?
+
+  private
+
+  def password_required?
+    !persisted? || password.present? || password_confirmation.present?
+  end
 end
