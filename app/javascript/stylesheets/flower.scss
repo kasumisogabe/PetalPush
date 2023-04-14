@@ -7,6 +7,14 @@ body {
   height: 100%;
   font-family:  "ヒラギノ角ゴ ProN W3"
 }
+body {
+  height: 100%;
+  font-family:  "ヒラギノ角ゴ ProN W3";
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
 
 .header {
   background-color: #FFD4D4;
@@ -42,6 +50,7 @@ body {
   background-color: #FFFFE8;
   height: 100%;
   z-index: 0;
+  min-height: calc(100vh - 60px);
 }
 
 .submit-button {
@@ -305,6 +314,53 @@ body {
 .custom-link:hover {
   color: #FF8B8B;
   text-decoration: none;
+}
+
+.feature-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.feature-contenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.feature-wrapper h1,
+.feature-wrapper h2 {
+  color: #FFA6A6;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.feature-wrapper h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.feature-wrapper h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .footer {
