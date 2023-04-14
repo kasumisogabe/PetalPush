@@ -8,8 +8,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :confirmable
   
-  validates :name, presence: true
-  validates :password, length: { minimum: 6 }, if: :password_required?, allow_blank: true
+  validates :name, presence: true, length: { maximum: 300 }
+  validates :email, presence: true, length: { maximum: 300 }
+  validates :password, length: { minimum: 6, maximum: 300 }, if: :password_required?, allow_blank: true
   validates :password_confirmation, presence: true, if: :password_required?
 
   private
