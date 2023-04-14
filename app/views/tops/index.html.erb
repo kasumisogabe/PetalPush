@@ -32,4 +32,6 @@
       <li>いいねした投稿はマイページでいつでも確認でき、花の思い出が蘇ります。</li>
     </ul>
   </div>
+  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+  <%= link_to 'ゲストログイン（管理者用）', users_guest_admin_sign_in_path, method: :post %>
 </div>
