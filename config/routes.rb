@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   get 'flowers/index'
   resources :maps
+  resources :tops, only: [:index]
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
