@@ -6,7 +6,7 @@ class User < ApplicationRecord
   #userがお気に入りした花の情報を取得できる
 
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable, :confirmable
+        :recoverable, :rememberable, :validatable
   
   validates :name, presence: true, length: { maximum: 300 }
   validates :email, presence: true, length: { maximum: 300 }
