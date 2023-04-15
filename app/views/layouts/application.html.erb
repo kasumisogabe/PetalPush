@@ -18,7 +18,10 @@
         <% if user_signed_in? %>
           <%= link_to '<i class="fa-solid fa-house" style="color: #FFA6A6;"></i>'.html_safe, user_path(current_user.id) %>
           <%= link_to '<i class="fa-solid fa-right-from-bracket" style="color: #FFA6A6;"></i>'.html_safe, destroy_user_session_path, method: :delete %>
-        <% else %>
+            <% if current_user.admin? %>
+              <%= link_to '管理者ページ', rails_admin_path, style: "color: #FFA6A6;" %>
+            <% end %>
+          <% else %>
           <%= link_to '<i class="fa-solid fa-right-to-bracket" style="color: #ffa6a6;"></i>'.html_safe, new_user_session_path %>
           <%= link_to '<i class="fa-solid fa-user-plus" style="color: #ffa6a6;"></i>'.html_safe, new_user_registration_path %>
         <% end %>
