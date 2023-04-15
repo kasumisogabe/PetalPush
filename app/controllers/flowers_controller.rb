@@ -1,6 +1,7 @@
 class FlowersController < ApplicationController
   before_action :set_flower, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :ensure_correct_user, only: %i[ edit update destroy ]
 
   # GET /flowers or /flowers.json
   def index
@@ -69,5 +70,12 @@ class FlowersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def flower_params
       params.require(:flower).permit(:name, :description, :image, :address, :latitude, :longitude)
+    end
+
+    def ensure_correct_user
+      @user = User.find(params[:id])
+      unless @user == current_user
+        redirect_to root_path, alert: "アクセス権限がありません。"
+      end
     end
 end
