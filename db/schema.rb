@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_07_073047) do
+ActiveRecord::Schema.define(version: 2023_04_14_145149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_04_07_073047) do
 
   create_table "comments", force: :cascade do |t|
     t.bigint "flower_id", null: false
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["flower_id"], name: "index_comments_on_flower_id"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 2023_04_07_073047) do
   create_table "flowers", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "address"
-    t.decimal "latitude"
-    t.decimal "longitude"
+    t.string "address", null: false
+    t.decimal "latitude", null: false
+    t.decimal "longitude", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2023_04_07_073047) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.boolean "admin", default: false
+    t.boolean "admin", default: false, null: false
     t.string "name", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

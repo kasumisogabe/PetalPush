@@ -15,29 +15,31 @@
   <body>
     <header class ="header">
       <div class ="header-icon">
-      <% if user_signed_in? %>
-        <%= link_to '<i class="fa-solid fa-house" style="color: #FFA6A6;"></i>'.html_safe, user_path(current_user.id) %>
-        <%= link_to '<i class="fa-solid fa-right-from-bracket" style="color: #FFA6A6;"></i>'.html_safe, destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to '<i class="fa-solid fa-right-to-bracket" style="color: #ffa6a6;"></i>'.html_safe, new_user_session_path %>
-        <%= link_to '<i class="fa-solid fa-user-plus" style="color: #ffa6a6;"></i>'.html_safe, new_user_registration_path %>
-      <% end %>
-      
-
-      <% if notice %>
-        <p class="alert alert-notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-error"><%= alert %></p>
-      <% end %>
-    </header>
+        <% if user_signed_in? %>
+          <%= link_to '<i class="fa-solid fa-house" style="color: #FFA6A6;"></i>'.html_safe, user_path(current_user.id) %>
+          <%= link_to '<i class="fa-solid fa-right-from-bracket" style="color: #FFA6A6;"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to '<i class="fa-solid fa-right-to-bracket" style="color: #ffa6a6;"></i>'.html_safe, new_user_session_path %>
+          <%= link_to '<i class="fa-solid fa-user-plus" style="color: #ffa6a6;"></i>'.html_safe, new_user_registration_path %>
+        <% end %>
+      </div>
+      <div class="header-center-link">
+        <%= link_to 'PetalPush', flowers_path, class: 'custom-link' %>
+      </div>
+      </header>
 
     <div class="content">
-    <%= yield %>
+      <% if notice %>
+          <p class="alert alert-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+      <%= yield %>
     </div>
 
     <footer class ="footer">
-      <p><a href="#"</a>PetalPush</p>
+      <%= link_to "トップページへ", tops_path, class: 'footer-link' %>
     </footer>
   </body>
 </html>

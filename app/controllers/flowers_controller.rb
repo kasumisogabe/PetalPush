@@ -41,7 +41,7 @@ class FlowersController < ApplicationController
   def update
     respond_to do |format|
       if @flower.update(flower_params)
-        format.html { redirect_to flower_url(@flower), notice: "Flower was successfully updated." }
+        format.html { redirect_to flower_url(@flower), notice: "投稿を編集しました" }
         format.json { render :show, status: :ok, location: @flower }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class FlowersController < ApplicationController
     @flower.destroy
 
     respond_to do |format|
-      format.html { redirect_to flowers_url, notice: "Flower was successfully destroyed." }
+      format.html { redirect_to flowers_url, notice: "投稿を削除しました" }
       format.json { head :no_content }
     end
   end
