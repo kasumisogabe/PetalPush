@@ -17,12 +17,12 @@
   <div class="form-container">
     <div class="field">
       <%= form.label :name, class: "form-label" %>
-      <%= form.text_field :name, class: "form-input" %>
+      <%= form.text_field :name, placeholder: '花の名前を入力してください', class: "form-input" %>
     </div>
 
     <div class="field">
       <%= form.label :description, class: "form-label" %>
-      <%= form.text_area :description, class: "form-input" %>
+      <%= form.text_area :description, placeholder: '花の詳細を入力してください', class: "form-input" %>
     </div>
 
     <div class="field">
@@ -32,15 +32,15 @@
 
     <div class="field">
       <%= form.label :address, class: "form-label" %>
-      <%= form.text_field :address, class: "form-input" %>
+      <%= form.text_field :address, placeholder: '住所や建物の名前を入力してください', class: "form-input" %>
     </div>
 
-    <div class="field">
+    <div class="field" hidden>
       <%= form.label :latitude %>
       <%= form.number_field :latitude, step: 'any', id: 'lat' %>
     </div>
 
-    <div class="field">
+    <div class="field" hidden>
       <%= form.label :longitude %>
       <%= form.number_field :longitude, step: 'any', id: 'lng' %>
     </div>
