@@ -118,9 +118,11 @@
           </div>
           <div class="actions">
             <%= link_to 'Show', flower %>
-            <%= link_to 'Edit', edit_flower_path(flower) %>
-            <%= link_to 'Destroy', flower, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
+              <% if user_signed_in? && current_user == flower.user %>
+                <%= link_to 'Edit', edit_flower_path(flower) %>
+                <%= link_to 'Destroy', flower, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
         </div>
       <% end %>
     </div>
