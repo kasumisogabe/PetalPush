@@ -1,7 +1,25 @@
 ---
 ja:
   activerecord:
-    errors:
+    models:
+      flower: 花
+      user: ユーザー
+      comment: コメント
+    attributes:
+      flower:
+        name: 花の名前
+        description: 花の詳細
+        address: 住所
+      user:
+        name: ユーザ名
+      comment:
+        content: 内容
+  errors:
+    template:
+      header:
+        one: "%{model}に%{count}件のエラーがこの%{model}の保存を禁止しました:"
+        other: "%{model}に%{count}件のエラーがこの%{model}の保存を禁止しました:"
+      body: 次の項目を確認してください
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
