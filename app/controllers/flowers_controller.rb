@@ -78,7 +78,7 @@ class FlowersController < ApplicationController
     end
 
     def ensure_correct_user
-      @user = User.find(params[:id])
+      @user = @flower.user
       unless @user == current_user
         redirect_to root_path, alert: "アクセス権限がありません。"
       end

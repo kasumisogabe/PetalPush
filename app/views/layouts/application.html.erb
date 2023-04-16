@@ -16,20 +16,20 @@
     <header class ="header">
       <div class ="header-icon">
         <% if user_signed_in? %>
-          <%= link_to '<i class="fa-solid fa-house" style="color: #FFA6A6;"></i>'.html_safe, user_path(current_user.id) %>
-          <%= link_to '<i class="fa-solid fa-right-from-bracket" style="color: #FFA6A6;"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+          <%= link_to 'プロフィール', user_path(current_user.id) %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
             <% if current_user.admin? %>
-              <%= link_to '管理者ページ', rails_admin_path, style: "color: #FFA6A6;" %>
+              <%= link_to '管理者ページ', rails_admin_path %>
             <% end %>
           <% else %>
-          <%= link_to '<i class="fa-solid fa-right-to-bracket" style="color: #ffa6a6;"></i>'.html_safe, new_user_session_path %>
-          <%= link_to '<i class="fa-solid fa-user-plus" style="color: #ffa6a6;"></i>'.html_safe, new_user_registration_path %>
+          <%= link_to 'サインイン'.html_safe, new_user_session_path %>
+          <%= link_to 'ログイン'.html_safe, new_user_registration_path %>
         <% end %>
       </div>
       <div class="header-center-link">
         <%= link_to 'PetalPush', flowers_path, class: 'custom-link' %>
       </div>
-      </header>
+    </header>
 
     <div class="content">
       <% if notice %>
