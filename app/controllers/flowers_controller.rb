@@ -15,7 +15,12 @@ class FlowersController < ApplicationController
   def show
     @comments = @flower.comments
     @comment = @flower.comments.build
-    @favorite = current_user.favorites.find_by(flower_id: @flower.id)
+    # @favorite = current_user.favorites.find_by(flower_id: @flower.id)
+    if user_signed_in?
+      @favorite = current_user.favorites.find_by(flower_id: @flower.id)
+    else
+      @favorite = nil
+    end
   end
 
   # GET /flowers/new
