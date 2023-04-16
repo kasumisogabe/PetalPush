@@ -117,10 +117,10 @@
             <div class="created-at"><%= time_ago_in_words(flower.created_at) %>前</div>
           </div>
           <div class="actions">
-            <%= link_to 'Show', flower %>
+            <%= link_to '詳細', flower %>
               <% if user_signed_in? && current_user == flower.user %>
-                <%= link_to 'Edit', edit_flower_path(flower) %>
-                <%= link_to 'Destroy', flower, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to '編集', edit_flower_path(flower) %>
+                <%= link_to '削除', flower, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </div>
         </div>
