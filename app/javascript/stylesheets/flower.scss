@@ -33,6 +33,15 @@ ul {
   z-index: 1;
 }
 
+.header a {
+  color: #FF6666;
+  font-size: 14px;
+}
+
+.header a:hover {
+  color: #FF8C8C;
+}
+
 .header-icon {
   margin: 10px 20px;
 }
