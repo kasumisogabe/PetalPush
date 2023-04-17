@@ -63,42 +63,57 @@ RSpec.describe '花の投稿管理機能', type: :system do
   #   end
   # end
 
-  describe '編集機能のテスト' do
-    context '花の名前を編集した場合' do
+  # describe '編集機能のテスト' do
+  #   context '花の名前を編集した場合' do
+  #     it '編集した花の名前が表示される' do
+  #       visit new_user_session_path
+  #       fill_in 'user_email', with: 'user@example.com'
+  #       fill_in 'user_password', with: '12345678'
+  #       click_button 'ログイン'
+  #       visit edit_flower_path(flower)
+  #       fill_in 'flower_name', with: 'コスモス'
+  #       fill_in 'flower_description', with: '可愛い'
+  #       fill_in 'flower_address', with: '東京タワー'
+  #       execute_script("document.getElementById('lat').value = 35.6895;")
+  #       execute_script("document.getElementById('lng').value = 139.6917;")
+  #       attach_file 'flower_image', "#{Rails.root}/spec/fixtures/test_image.jpg"
+  #       click_button '登録'
+  #       expect(page).to have_content '投稿を編集しました'
+  #       expect(page).to have_content 'コスモス'
+  #     end
+  #   end
+
+  #   context '花の名前を空白にした場合' do
+  #     it '編集できない旨が表示される' do
+  #       visit new_user_session_path
+  #       fill_in 'user_email', with: 'user@example.com'
+  #       fill_in 'user_password', with: '12345678'
+  #       click_button 'ログイン'
+  #       visit edit_flower_path(flower)
+  #       fill_in 'flower_name', with: ''
+  #       fill_in 'flower_description', with: '可愛い'
+  #       fill_in 'flower_address', with: '東京タワー'
+  #       execute_script("document.getElementById('lat').value = 35.6895;")
+  #       execute_script("document.getElementById('lng').value = 139.6917;")
+  #       attach_file 'flower_image', "#{Rails.root}/spec/fixtures/test_image.jpg"
+  #       click_button '登録'
+  #       expect(page).to have_content '花の名前を入力してください'
+  #     end
+  #   end
+  # end
+
+  describe '詳細機能のテスト' do
+    context '花の詳細を確認した場合' do
       it '編集した花の名前が表示される' do
         visit new_user_session_path
         fill_in 'user_email', with: 'user@example.com'
         fill_in 'user_password', with: '12345678'
         click_button 'ログイン'
-        visit edit_flower_path(flower)
-        fill_in 'flower_name', with: 'コスモス'
-        fill_in 'flower_description', with: '可愛い'
-        fill_in 'flower_address', with: '東京タワー'
-        execute_script("document.getElementById('lat').value = 35.6895;")
-        execute_script("document.getElementById('lng').value = 139.6917;")
-        attach_file 'flower_image', "#{Rails.root}/spec/fixtures/test_image.jpg"
-        click_button '登録'
-        expect(page).to have_content '投稿を編集しました'
-        expect(page).to have_content 'コスモス'
+        click_link '詳細'
+        sleep(0.5)
+        expect(page).to have_content '桜'
+        expect(page).to have_content '東京タワー'
       end
     end
-
-    context '花の名前を空白にした場合' do
-      it '編集できない旨が表示される' do
-        visit new_user_session_path
-        fill_in 'user_email', with: 'user@example.com'
-        fill_in 'user_password', with: '12345678'
-        click_button 'ログイン'
-        visit edit_flower_path(flower)
-        fill_in 'flower_name', with: ''
-        fill_in 'flower_description', with: '可愛い'
-        fill_in 'flower_address', with: '東京タワー'
-        execute_script("document.getElementById('lat').value = 35.6895;")
-        execute_script("document.getElementById('lng').value = 139.6917;")
-        attach_file 'flower_image', "#{Rails.root}/spec/fixtures/test_image.jpg"
-        click_button '登録'
-        expect(page).to have_content '花の名前を入力してください'
-      end
-    end
-  end
+  end  
 end

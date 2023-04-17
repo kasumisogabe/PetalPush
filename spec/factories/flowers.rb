@@ -5,6 +5,10 @@ FactoryBot.define do
     address { '東京タワー' }
     latitude { 35.65856 }
     longitude { 139.745461 }
+
+    after(:build) do |flower|
+      flower.image.attach(io: File.open("#{Rails.root}/spec/fixtures/test_image.jpg"), filename: 'test_image.jpg', content_type: 'image/jpeg')
+    end
   end
 
   factory :second_flower, class: Flower do
