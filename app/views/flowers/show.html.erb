@@ -27,6 +27,10 @@
       </div>
 
       <div class="flower-name">
+        <%= @flower.address %>
+      </div>
+
+      <div class="flower-name">
         <script type="text/javascript">
           function initMap() {
             var test = {lat: <%= @flower.latitude %>, lng: <%= @flower.longitude %>};
