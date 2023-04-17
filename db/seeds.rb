@@ -30,6 +30,11 @@ require 'open-uri'
     flower_id: flower.id
   )
 
+  Favorite.create!(
+    user_id: user.id,
+    flower_id: flower.id
+  )
+
   # ダウンロードするサンプル画像のURL
   image_url = 'https://picsum.photos/200/300'
 
