@@ -4,9 +4,9 @@
       <div class="comment-content" id="this_comment_<%= comment.id %>">
         <p><%= comment.content %></p>
         <div class="comment-actions">
-        <%= link_to '<i class="fa-solid fa-pen-to-square" style="color: #ffa6a6;"></i>'.html_safe, edit_flower_comment_path(flower, comment), remote: true, class: "comment-action-link" %>
-        <%= link_to '<i class="fa-solid fa-circle-xmark" style="color: #ffa6a6;"></i>'.html_safe, flower_comment_path(comment.flower_id, comment.id), method: :delete, remote: true, 
-                                        data: { confirm: "本当に削除しますか?"}, class: "comment-action-link" %>
+        <%= link_to 'コメントを編集', edit_flower_comment_path(flower, comment), remote: true, class: 'custom-link' %>
+        <%= link_to 'コメントを削除', flower_comment_path(comment.flower_id, comment.id), method: :delete, remote: true, 
+                                        data: { confirm: "本当に削除しますか?"}, class: 'custom-link' %>
         </div>
       </div>
     <% end %>
