@@ -80,7 +80,7 @@ class FlowersController < ApplicationController
     def ensure_correct_user
       @user = @flower.user
       unless @user == current_user
-        redirect_to root_path, alert: "アクセス権限がありません。"
+        redirect_to flowers_path, alert: "アクセス権限がありません。"
       end
     end
 end
