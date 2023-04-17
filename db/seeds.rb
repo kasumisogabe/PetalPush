@@ -25,6 +25,11 @@ require 'open-uri'
     user_id: user.id
   )
 
+  Comment.create!(
+    content: Faker::Lorem.sentence,
+    flower_id: flower.id
+  )
+
   # ダウンロードするサンプル画像のURL
   image_url = 'https://picsum.photos/200/300'
 
