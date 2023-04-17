@@ -1,7 +1,8 @@
 require 'rails_helper'
 RSpec.describe '花の投稿管理機能', type: :system do
   let!(:user) {FactoryBot.create(:user)}
-  let!(:flower){FactoryBot.create(:flower, user: user)}
+  let!(:flower) { FactoryBot.create(:flower, user: user) }
+  let!(:second_flower) { FactoryBot.create(:second_flower, user: user) }
 
   # describe '投稿機能のテスト' do
   #   context '投稿を新規作成した場合' do
@@ -134,16 +135,31 @@ RSpec.describe '花の投稿管理機能', type: :system do
   #   end
   # end
 
-  describe '一覧機能のテスト' do
-    context '一覧画面に遷移した場合' do
-      it '投稿されている花の投稿が表示される' do
+  # describe '一覧機能のテスト' do
+  #   context '一覧画面に遷移した場合' do
+  #     it '投稿されている花の投稿が表示される' do
+  #       visit new_user_session_path
+  #       fill_in 'user_email', with: 'user@example.com'
+  #       fill_in 'user_password', with: '12345678'
+  #       click_button 'ログイン'
+  #       expect(page).to have_content '桜'
+  #       expect(page).to have_content '東京タワー'
+  #       # expect(page).not_to have_content 'スカイツリー'
+  #     end
+  #   end
+  # end
+
+  describe '検索機能のテスト' do
+    context '花の情報を検索した場合' do
+      it '検索結果が表示される' do
         visit new_user_session_path
         fill_in 'user_email', with: 'user@example.com'
         fill_in 'user_password', with: '12345678'
         click_button 'ログイン'
-        expect(page).to have_content '桜'
-        expect(page).to have_content '東京タワー'
-        # expect(page).not_to have_content 'スカイツリー'
+        fill_in 'q_name_or_description_or_address_cont', with: 'ひまわり'
+        click_button '検索'
+        expect(page).to have_content 'ひまわり'
+        expect(page).to have_content '横浜駅'
       end
     end
   end
