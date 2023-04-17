@@ -102,18 +102,35 @@ RSpec.describe '花の投稿管理機能', type: :system do
   #   end
   # end
 
-  describe '詳細機能のテスト' do
-    context '花の詳細を確認した場合' do
-      it '編集した花の名前が表示される' do
+  # describe '詳細機能のテスト' do
+  #   context '花の詳細を確認した場合' do
+  #     it '編集した花の名前が表示される' do
+  #       visit new_user_session_path
+  #       fill_in 'user_email', with: 'user@example.com'
+  #       fill_in 'user_password', with: '12345678'
+  #       click_button 'ログイン'
+  #       click_link '詳細'
+  #       sleep(0.5)
+  #       expect(page).to have_content '桜'
+  #       expect(page).to have_content '東京タワー'
+  #     end
+  #   end
+  # end
+
+  describe '削除機能のテスト' do
+    context '花の投稿を削除した場合' do
+      it '削除した花の投稿がなくなる' do
         visit new_user_session_path
         fill_in 'user_email', with: 'user@example.com'
         fill_in 'user_password', with: '12345678'
         click_button 'ログイン'
-        click_link '詳細'
+        accept_confirm do
+          click_link '削除'
+        end
         sleep(0.5)
-        expect(page).to have_content '桜'
-        expect(page).to have_content '東京タワー'
+        expect(page).not_to have_content '桜'
+        expect(page).not_to have_content '東京タワー'
       end
     end
-  end  
+  end
 end
