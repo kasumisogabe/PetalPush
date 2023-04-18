@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   private
 
+  # パスワードが必要かどうかを判断。新規ユーザーまたはパスワード変更を試みる既存ユーザーに対して必要かどうか
   def password_required?
     !persisted? || password.present? || password_confirmation.present?
   end
