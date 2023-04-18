@@ -3,14 +3,7 @@ require 'rails_helper'
 RSpec.describe 'コメント機能', type: :system do
   let!(:user) { FactoryBot.create(:user) }
   let!(:flower) { FactoryBot.create(:flower, user: user) }
-  let!(:comment) { FactoryBot.create(:comment, flower: flower) }
-
-  before do
-    visit new_user_session_path
-    fill_in 'user_email', with: 'user@example.com'
-    fill_in 'user_password', with: '12345678'
-    click_button 'ログイン'
-  end
+  let!(:comment) { FactoryBot.create(:comment, flower: flower, user: user) }
 
   describe 'コメント投稿のテスト' do
     context 'コメントを投稿する場合' do
