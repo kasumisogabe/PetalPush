@@ -5,6 +5,10 @@ ja:
       flower: 花
       user: ユーザー
       comment: コメント
+      favorite: お気に入り
+      active_storage/blob: "添付ファイル"
+      active_storage/attachment: "添付"
+      active_storage/variant_record: "バリアント"
     attributes:
       flower:
         name: 花の名前
