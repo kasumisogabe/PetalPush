@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_flower, only: [:create, :edit, :update]
+  before_action :check_comment_owner, only: [:edit, :update, :destroy]
 
   def create
     @comment = @flower.comments.build(comment_params)
+    @comment.user = current_user
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -46,5 +48,12 @@ class CommentsController < ApplicationController
   end
   def set_flower
     @flower = Flower.find(params[:flower_id])
+  end
+
+  def check_comment_owner
+    @comment = Comment.find(params[:id])
+    unless @comment.user == current_user
+      redirect_to flower_path(@flower), alert: 'アクセスが制限されています。'
+    end
   end
 end

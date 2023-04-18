@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :flowers, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_flowers, through: :favorites, source: :flower, dependent: :destroy
   has_one_attached :profile_image
