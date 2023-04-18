@@ -64,13 +64,13 @@
         <div id="map"></div>
       </div>
 
-      <div class="flower-name">
+      <div class="flower-name" id: "favorite-button" >
         <% if user_signed_in? %>
           <% unless @flower.favorite_users == current_user %>
             <% if @favorite.present? %>
-              <%= link_to '<i class="fa-solid fa-heart" style="color: #ffa6a6;"></i>'.html_safe, favorite_path(id: @favorite.id), method: :delete %>
+              <%= link_to 'お気に入りを解除する', favorite_path(id: @favorite.id), method: :delete, class: "custom-link" %>
             <% else %>
-              <%= link_to '<i class="fa-regular fa-heart" style="color: #ffa6a6;"></i>'.html_safe, favorites_path(flower_id: @flower.id), method: :post %>
+              <%= link_to 'お気に入りする', favorites_path(flower_id: @flower.id), method: :post, class: "custom-link" %>
             <% end %>
           <% end %>
         <% end %>
