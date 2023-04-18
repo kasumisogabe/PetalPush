@@ -15,30 +15,35 @@ require 'open-uri'
     password: "password",
     password_confirmation: "password"
   )
+end
 
-  flower = Flower.create!(
-    name: Faker::Lorem.words(number: 2).join(' '),
-    description: Faker::Lorem.paragraph(sentence_count: 2),
-    address: Faker::Address.street_address,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
-    user_id: user.id
-  )
+User.all.each do |user|
+  1.times do
+    flower = Flower.create!(
+      name: Faker::Lorem.words(number: 2).join(' '),
+      description: Faker::Lorem.paragraph(sentence_count: 2),
+      address: Faker::Address.street_address,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
+      user_id: user.id
+    )
 
-  Comment.create!(
-    content: Faker::Lorem.sentence,
-    flower_id: flower.id
-  )
+    # ダウンロードするサンプル画像のURL
+    image_url = 'https://picsum.photos/200/300'
 
-  Favorite.create!(
-    user_id: user.id,
-    flower_id: flower.id
-  )
+    # ActiveStorageを使って画像をアタッチ
+    image = URI.open(image_url)
+    flower.image.attach(io: image, filename: "sample_image_#{flower.id}.jpg", content_type: 'image/jpg')
 
-  # ダウンロードするサンプル画像のURL
-  image_url = 'https://picsum.photos/200/300'
+    Comment.create!(
+      content: Faker::Lorem.sentence,
+      user_id: user.id,
+      flower_id: flower.id
+    )
 
-  # ActiveStorageを使って画像をアタッチ
-  image = URI.open(image_url)
-  flower.image.attach(io: image, filename: "sample_image_#{flower.id}.jpg", content_type: 'image/jpg')
+    Favorite.create!(
+      user_id: user.id,
+      flower_id: flower.id
+    )
+  end
 end
