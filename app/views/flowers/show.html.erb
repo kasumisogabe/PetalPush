@@ -32,7 +32,7 @@
 
       <div class="flower-name">
         <script type="text/javascript">
-          function initMap() {
+          function initMapshow() {
             var test = {lat: <%= @flower.latitude %>, lng: <%= @flower.longitude %>};
             var map = new google.maps.Map(document.getElementById('map'), {
                       zoom: 15, 
@@ -54,7 +54,7 @@
             });
           }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMapshow" async defer></script>
         <style type="text/css">
           #map {
             height: 200px;
