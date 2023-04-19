@@ -19,14 +19,14 @@
         }
       </style>
       <script>
-      let map;
-      let bounds;
-      let marker = [];
-      let infoWindow = [];
+      var map;
+      var bounds;
+      var marker = [];
+      var infoWindow = [];
       // コントローラーで定義したインスタンス変数(@flowers)を代入
-      let markerData = gon.flowers;
+      var markerData = gon.flowers;
       
-      function initMap() {
+      function initMapindex() {
         // マップの初期化
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 9,
@@ -101,7 +101,7 @@
         }
       }
       </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMapindex" async defer></script>
   </thead>
 
   <tbody>
