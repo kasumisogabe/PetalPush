@@ -20,6 +20,7 @@
       </style>
       <script>
       let map;
+      let bounds;
       let marker = [];
       let infoWindow = [];
       // コントローラーで定義したインスタンス変数(@flowers)を代入
@@ -27,7 +28,7 @@
       
       function initMap() {
         // マップの初期化
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 9,
           center: {lat: 35.4550426, lng: 139.6312741}
         });
