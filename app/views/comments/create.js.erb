@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+  $('#flash-message').html('<%= j render partial: "shared/flash", locals: { flash: flash } %>');
+<% else %>
+  $('#flash-message').empty();
+<% end %>
+
+// コメントが正常に保存された場合、フラッシュメッセージを消す
+<% if @comment.errors.blank? %>
+  $('#flash-message').empty();
+<% end %>

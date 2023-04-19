@@ -5,14 +5,22 @@ class CommentsController < ApplicationController
   def create
     @comment = @flower.comments.build(comment_params)
     @comment.user = current_user
+
+    if @comment.save
+      flash[:success] = 'コメントが投稿されました'
+    else
+      flash[:notice] = 'コメントを投稿できませんでした...'
+    end
+
     respond_to do |format|
       if @comment.save
         format.js { render :index }
       else
-        format.html { redirect_to flower_path(@flower), notice: '投稿できませんでした...' }
+        format.html { redirect_to flower_path(@flower) }
       end
     end
   end
+
   def edit
     @comment = @flower.comments.find(params[:id])
     respond_to do |format|
