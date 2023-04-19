@@ -108,6 +108,11 @@
         <%= image_tag flower.image.variant(resize_and_pad: [200, 200]) %>
       <% end %>
       <div class="image-info">
+        <% if flower.user.profile_image.attached? %>
+          <%= image_tag flower.user.profile_image.variant(resize: "200x200"), class: "rounded-small-profile-image" %>
+        <% else %>
+          <p>No profile image</p>
+        <% end %>
         <div class="user-name"><%= flower.user.name %></div>
         <div class="flower-name"><%= flower.name %></div>
         <div class="flower-description"><%= flower.description %></div>
