@@ -2,9 +2,8 @@
   <div class="detail-item">
     <div class="image-info">
       <h1><%= @user.name %>さんのページ</h1>
-      <p>プロフィール画像: 
-        <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image.variant(resize: "300x300") %>
+      <p><% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image.variant(resize: "200x200"), class: "profile-image" %>
         <% else %>
           <p>No profile image</p>
         <% end %></p>
