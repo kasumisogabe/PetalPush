@@ -413,6 +413,15 @@ h2 {
   margin-right: 15px;
 }
 
+.user-profile a {
+  color: #333;
+  text-decoration: none;
+}
+
+.user-profile a:hover {
+  color: #FF8C8C;
+}
+
 .footer {
   background-color: #CDE990;
   height: 20px;

@@ -110,7 +110,7 @@
           <% if flower.user.profile_image.attached? %>
             <%= image_tag flower.user.profile_image.variant(resize: "40x40", auto_orient: true, quality: 100), class: "rounded-small-profile-image" %>
           <% else %>
-          <%= image_tag "default_profile_image.png", alt: "デフォルトプロフィール画像", class: "rounded-small-profile-image", size: "40x40" %>
+            <%= image_tag "default_profile_image.png", alt: "デフォルトプロフィール画像", class: "rounded-small-profile-image", size: "40x40" %>
           <% end %>
         </div>
         <div class="user-name"><%= flower.user.name %></div>
