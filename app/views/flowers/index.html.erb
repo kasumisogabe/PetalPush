@@ -104,20 +104,21 @@
 <div class="grid-container">
   <% @flowers.each do |flower| %>
     <div class="grid-item">
-      <% if flower.image.attached? %>
-        <%= image_tag flower.image.variant(resize_and_pad: [200, 200]) %>
-      <% end %>
-      <div class="image-info">
       <div class="user-info">
         <div>
           <% if flower.user.profile_image.attached? %>
-            <%= image_tag flower.user.profile_image.variant(resize: "70x70", auto_orient: true, quality: 100), class: "rounded-small-profile-image" %>
+            <%= image_tag flower.user.profile_image.variant(resize: "40x40", auto_orient: true, quality: 100), class: "rounded-small-profile-image" %>
           <% else %>
             <p>No profile image</p>
           <% end %>
         </div>
         <div class="user-name"><%= flower.user.name %></div>
       </div>
+      <% if flower.image.attached? %>
+        <%= image_tag flower.image.variant(resize_and_pad: [200, 200]) %>
+      <% end %>
+      <div class="image-info">
+      
         <div class="flower-name"><%= flower.name %></div>
         <div class="flower-description"><%= flower.description %></div>
         <div class="flower-address"><%= flower.address %></div>
