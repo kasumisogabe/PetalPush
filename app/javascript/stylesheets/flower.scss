@@ -69,7 +69,8 @@ ul {
 .rounded-small-profile-image {
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
+  width: 40px !important;
+  height: 40px !important;
 }
 
 .user-info {
@@ -79,10 +80,6 @@ ul {
   grid-gap: 20px;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.user-info img {
-  margin-right: 20px !important;
 }
 
 .user-info a {
