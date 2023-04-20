@@ -8,7 +8,15 @@ class FlowersController < ApplicationController
     @flowers = Flower.all
     @q = Flower.ransack(params[:q])
     @flowers = @q.result(distinct: true).order("created_at desc")
-    gon.flowers = @flowers
+    gon.flowers = @flowers.map do |flower|
+      {
+      id: flower.id,
+      name: flower.name,
+      latitude: flower.latitude,
+      longitude: flower.longitude,
+      image_url: rails_blob_url(flower.image)
+    }
+    end
   end
 
   # GET /flowers/1 or /flowers/1.json

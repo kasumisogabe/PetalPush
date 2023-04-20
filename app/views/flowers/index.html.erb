@@ -50,7 +50,7 @@
       // 各スポットの吹き出しを作成
       infoWindow[i] = new google.maps.InfoWindow({
         // 吹き出しの内容
-        content: `<a href='/flowers/${ id }'>${ markerData[i]['name'] }</a>`
+        content: `<a href='/flowers/${ id }' class='custom-link'>${ markerData[i]['name'] }<br><img src="${ markerData[i]['image_url'] }" width="100" /></a>`
       });
 
       // マーカーにクリックイベント追加
