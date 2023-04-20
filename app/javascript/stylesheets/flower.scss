@@ -1,12 +1,7 @@
 html {
   font-size: 80%;
-  height: 200%;
 }
 
-body {
-  height: 100%;
-  font-family:  "ヒラギノ角ゴ ProN W3"
-}
 body {
   height: 100%;
   font-family:  "ヒラギノ角ゴ ProN W3";
@@ -58,12 +53,10 @@ ul {
 
 .content {
   padding-top: 60px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   text-align:center;
   background-color: #FFFFE8;
-  height: 100%;
   z-index: 0;
-  min-height: calc(100vh - 60px);
 }
 
 .rounded-small-profile-image {
@@ -135,15 +128,44 @@ ul {
   color: white;
 }
 
+// .grid-container {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//   gap: 16px;
+//   grid-gap: 20px;
+//   padding: 20px;
+//   box-sizing: border-box;
+// }
+
+// /* 各画像コンテナ */
+// .grid-item {
+//   position: relative;
+//   background-color: #fff;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//   border-radius: 5px;
+//   overflow: hidden;
+// }
+
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 16px;
   padding: 20px;
   box-sizing: border-box;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-/* 各画像コンテナ */
 .grid-item {
   position: relative;
   background-color: #fff;
@@ -231,6 +253,15 @@ ul {
 
 #map {
   margin: 0 auto;
+  height: 500px;
+  width: 100%;
+  max-width: 1500px;
+}
+
+@media (max-width: 767px) {
+  .grid-item {
+    width: 100%;
+  }
 }
 
 .form-container {
