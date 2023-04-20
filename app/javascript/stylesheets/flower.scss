@@ -1,12 +1,7 @@
 html {
   font-size: 80%;
-  height: 200%;
 }
 
-body {
-  height: 100%;
-  font-family:  "ヒラギノ角ゴ ProN W3"
-}
 body {
   height: 100%;
   font-family:  "ヒラギノ角ゴ ProN W3";
@@ -58,12 +53,10 @@ ul {
 
 .content {
   padding-top: 60px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   text-align:center;
   background-color: #FFFFE8;
-  height: 100%;
   z-index: 0;
-  min-height: calc(100vh - 60px);
 }
 
 .rounded-small-profile-image {
