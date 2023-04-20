@@ -131,6 +131,7 @@ ul {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
   grid-gap: 20px;
   padding: 20px;
   box-sizing: border-box;
@@ -224,6 +225,15 @@ ul {
 
 #map {
   margin: 0 auto;
+  height: 500px;
+  width: 100%;
+  max-width: 1500px;
+}
+
+@media (max-width: 767px) {
+  .grid-item {
+    width: 100%;
+  }
 }
 
 .form-container {
