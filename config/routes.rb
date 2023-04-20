@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: [:index, :create, :destroy]
   resources :users, only: [:show, :edit, :update] do
+    resources :favorites, only: [:index]
     get :favorites, on: :collection
   end
   get 'flowers/index'

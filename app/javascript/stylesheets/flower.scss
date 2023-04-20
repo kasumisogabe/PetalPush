@@ -85,6 +85,15 @@ ul {
   margin-right: 20px !important;
 }
 
+.user-info a {
+  color: #333;
+  text-decoration: none;
+}
+
+.user-info a:hover {
+  color: #FF8C8C;
+}
+
 .submit-button {
   background-color: #FFA6A6;
   border: none;

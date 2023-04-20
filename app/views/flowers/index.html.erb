@@ -106,6 +106,7 @@
     <div class="grid-item">
       <div class="user-info">
         <div>
+        <%= link_to user_path(flower.user.id) do %>
           <% if flower.user.profile_image.attached? %>
             <%= image_tag flower.user.profile_image.variant(resize: "40x40", auto_orient: true, quality: 100), class: "rounded-small-profile-image" %>
           <% else %>
@@ -113,6 +114,7 @@
           <% end %>
         </div>
         <div class="user-name"><%= flower.user.name %></div>
+        <% end %>
       </div>
       <% if flower.image.attached? %>
         <%= image_tag flower.image.variant(resize_and_pad: [200, 200]) %>

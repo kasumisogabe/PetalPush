@@ -26,7 +26,7 @@
 
       <div class="actions">
         <%= link_to "一覧画面へ", flowers_path, class: "submit-button submit-button-white" %>
-        <%= link_to 'お気に入り一覧', favorites_path, class: "submit-button submit-button-white" %>
+        <%= link_to 'お気に入り一覧', user_favorites_path(@user), class: "submit-button submit-button-white" %>
         <% if @user == current_user %>
           <%= link_to "プロフィールの編集", edit_user_path, class: "submit-button submit-button-white" %>
         <% end %>
