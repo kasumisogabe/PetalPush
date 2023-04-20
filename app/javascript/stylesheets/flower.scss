@@ -453,6 +453,11 @@ h2 {
   color: #FF8C8C;
 }
 
+.sign-in-container {
+  background-color: #FFFFE8;
+  min-height: 100vh; /* ブラウザの表示領域全体に広がるように設定 */
+}
+
 .footer {
   background-color: #CDE990;
   height: 20px;
