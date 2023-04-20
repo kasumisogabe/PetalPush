@@ -2,11 +2,11 @@
   <div class="detail-item">
     <div class="image-info">
       <h1><%= @user.name %>さんのページ</h1>
-      <p><% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image.variant(resize: "200x200"), class: "profile-image" %>
-        <% else %>
-          <p>No profile image</p>
-        <% end %></p>
+      <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image.variant(resize: "200x200"), class: "profile-image" %>
+      <% else %>
+        <%= image_tag "default_profile_image.png", alt: "デフォルトプロフィール画像", class: "profile-image", size: "200x200" %>
+      <% end %>
       <p>メールアドレス: <%= @user.email %></p>
 
       <div class="grid-container">

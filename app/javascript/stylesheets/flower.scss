@@ -404,6 +404,18 @@ h2 {
   margin-bottom: 20px;
 }
 
+.comment-content {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+}
+
 .footer {
   background-color: #CDE990;
   height: 20px;
