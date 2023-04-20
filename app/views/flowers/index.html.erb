@@ -50,7 +50,7 @@
       // 各スポットの吹き出しを作成
       infoWindow[i] = new google.maps.InfoWindow({
         // 吹き出しの内容
-        content: `<a href='/flowers/${ id }'>${ markerData[i]['name'] }</a>`
+        content: `<a href='/flowers/${ id }' class='custom-link'>${ markerData[i]['name'] }<br><img src="${ markerData[i]['image_url'] }" width="100" /></a>`
       });
 
       // マーカーにクリックイベント追加
@@ -104,11 +104,23 @@
 <div class="grid-container">
   <% @flowers.each do |flower| %>
     <div class="grid-item">
+      <div class="user-info">
+        <div>
+        <%= link_to user_path(flower.user.id) do %>
+          <% if flower.user.profile_image.attached? %>
+            <%= image_tag flower.user.profile_image.variant(resize: "40x40", auto_orient: true, quality: 100), class: "rounded-small-profile-image" %>
+          <% else %>
+            <p>No profile image</p>
+          <% end %>
+        </div>
+        <div class="user-name"><%= flower.user.name %></div>
+        <% end %>
+      </div>
       <% if flower.image.attached? %>
         <%= image_tag flower.image.variant(resize_and_pad: [200, 200]) %>
       <% end %>
       <div class="image-info">
-        <div class="user-name"><%= flower.user.name %></div>
+      
         <div class="flower-name"><%= flower.name %></div>
         <div class="flower-description"><%= flower.description %></div>
         <div class="flower-address"><%= flower.address %></div>

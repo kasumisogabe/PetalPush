@@ -2,9 +2,8 @@
   <div class="detail-item">
     <div class="image-info">
       <h1><%= @user.name %>さんのページ</h1>
-      <p>プロフィール画像: 
-        <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image.variant(resize: "300x300") %>
+      <p><% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image.variant(resize: "200x200"), class: "profile-image" %>
         <% else %>
           <p>No profile image</p>
         <% end %></p>
@@ -27,7 +26,7 @@
 
       <div class="actions">
         <%= link_to "一覧画面へ", flowers_path, class: "submit-button submit-button-white" %>
-        <%= link_to 'お気に入り一覧', favorites_path, class: "submit-button submit-button-white" %>
+        <%= link_to 'お気に入り一覧', user_favorites_path(@user), class: "submit-button submit-button-white" %>
         <% if @user == current_user %>
           <%= link_to "プロフィールの編集", edit_user_path, class: "submit-button submit-button-white" %>
         <% end %>

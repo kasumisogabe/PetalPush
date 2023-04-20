@@ -66,6 +66,34 @@ ul {
   min-height: calc(100vh - 60px);
 }
 
+.rounded-small-profile-image {
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-wrap: nowrap;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-info img {
+  margin-right: 20px !important;
+}
+
+.user-info a {
+  color: #333;
+  text-decoration: none;
+}
+
+.user-info a:hover {
+  color: #FF8C8C;
+}
+
 .submit-button {
   background-color: #FFA6A6;
   border: none;

@@ -4,7 +4,9 @@ class FavoritesController < ApplicationController
   def index
     # @favorites = current_user.favorites
     # flowerの情報が入っていないとダメ
-    @favorites = current_user.favorite_flowers
+    # @favorites = current_user.favorite_flowers
+    user = User.find(params[:user_id])
+    @favorites = user.favorite_flowers
   end
 
   def create
