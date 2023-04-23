@@ -57,6 +57,7 @@ ul {
   text-align:center;
   background-color: #FFFFE8;
   z-index: 0;
+  min-height: 100vh; 
 }
 
 .rounded-small-profile-image {
@@ -313,6 +314,7 @@ ul {
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
+  min-height: 100vh; 
 }
 
 /* 共通のスタイルを適用するために、.grid-itemを.detail-itemに変更 */
