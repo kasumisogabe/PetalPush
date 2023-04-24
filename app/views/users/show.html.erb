@@ -7,7 +7,9 @@
       <% else %>
         <%= image_tag "default_profile_image.png", alt: "デフォルトプロフィール画像", class: "profile-image", size: "200x200" %>
       <% end %>
-      <p>メールアドレス: <%= @user.email %></p>
+      <% if @user == current_user %>
+        <p>メールアドレス: <%= @user.email %></p>
+      <% end %>
     </div>
   </div>
   
