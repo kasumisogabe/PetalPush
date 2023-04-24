@@ -1,9 +1,9 @@
 <%= form_with(model: [flower, comment], local: false, html: { class: "comment-form" }) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
-    <h2>
-      <%= t("errors.template.header", model: t("activerecord.models.flower"), count: flower.errors.count) %>
-    </h2>
+      <h2>
+        <%= t("errors.template.header", model: t("activerecord.models.flower"), count: flower.errors.count) %>
+      </h2>
       <ul>
       <% comment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,7 +12,7 @@
     </div>
   <% end %>
   <div class="field">
-  <%= form.text_area :content, id: "comment_content_#{flower.id}", data: { test_id: "test_comment_content" } %>
+    <%= form.text_area :content, id: "comment_content_#{flower.id}", data: { test_id: "test_comment_content" } %>
   </div>
   <%= form.submit class: "submit-button" %>
 <% end %>
