@@ -5,13 +5,11 @@ class CommentsController < ApplicationController
   def create
     @comment = @flower.comments.build(comment_params)
     @comment.user = current_user
-
     if @comment.save
       flash[:success] = 'コメントが投稿されました'
     else
       flash[:notice] = 'コメントを投稿できませんでした...'
     end
-
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -28,6 +26,7 @@ class CommentsController < ApplicationController
       format.js { render :edit }
     end
   end
+
   def update
     @comment = @flower.comments.find(params[:id])
       respond_to do |format|
@@ -51,9 +50,11 @@ class CommentsController < ApplicationController
   end
   
   private
+
   def comment_params
     params.require(:comment).permit(:content)
   end
+  
   def set_flower
     @flower = Flower.find(params[:flower_id])
   end
