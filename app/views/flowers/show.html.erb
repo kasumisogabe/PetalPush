@@ -35,7 +35,7 @@
           function initMapshow() {
             var test = {lat: <%= @flower.latitude %>, lng: <%= @flower.longitude %>};
             var map = new google.maps.Map(document.getElementById('map'), {
-                      zoom: 15, 
+                      zoom: 10, 
                       center: test
                       });
             var transitLayer = new google.maps.TransitLayer();

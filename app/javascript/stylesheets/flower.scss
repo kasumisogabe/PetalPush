@@ -1,12 +1,7 @@
 html {
   font-size: 80%;
-  height: 200%;
 }
 
-body {
-  height: 100%;
-  font-family:  "ヒラギノ角ゴ ProN W3"
-}
 body {
   height: 100%;
   font-family:  "ヒラギノ角ゴ ProN W3";
@@ -58,12 +53,36 @@ ul {
 
 .content {
   padding-top: 60px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   text-align:center;
   background-color: #FFFFE8;
-  height: 100%;
   z-index: 0;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh; 
+}
+
+.rounded-small-profile-image {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.user-info {
+  display: flex;
+  flex-wrap: nowrap;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-info a {
+  color: #333;
+  text-decoration: none;
+}
+
+.user-info a:hover {
+  color: #FF8C8C;
 }
 
 .submit-button {
@@ -110,15 +129,44 @@ ul {
   color: white;
 }
 
+// .grid-container {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//   gap: 16px;
+//   grid-gap: 20px;
+//   padding: 20px;
+//   box-sizing: border-box;
+// }
+
+// /* 各画像コンテナ */
+// .grid-item {
+//   position: relative;
+//   background-color: #fff;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//   border-radius: 5px;
+//   overflow: hidden;
+// }
+
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 16px;
   padding: 20px;
   box-sizing: border-box;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-/* 各画像コンテナ */
 .grid-item {
   position: relative;
   background-color: #fff;
@@ -206,6 +254,15 @@ ul {
 
 #map {
   margin: 0 auto;
+  height: 500px;
+  width: 100%;
+  max-width: 1500px;
+}
+
+@media (max-width: 767px) {
+  .grid-item {
+    width: 100%;
+  }
 }
 
 .form-container {
@@ -257,6 +314,7 @@ ul {
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
+  min-height: 100vh; 
 }
 
 /* 共通のスタイルを適用するために、.grid-itemを.detail-itemに変更 */
@@ -293,7 +351,6 @@ ul {
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
-  width: 25%;
   max-width: 25%;
   margin-left: auto;
   margin-right: auto;
@@ -301,6 +358,7 @@ ul {
 
 .feature-title {
   font-size: 24px;
+  color: #FFA6A6;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -335,13 +393,16 @@ ul {
   align-items: center;
   justify-content: center;
   padding: 30px 0;
+  
 }
 
-.feature-contenter {
+.feature-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  max-width: 300px;
+  padding: 20px;
 }
 
 h1 {
@@ -374,6 +435,50 @@ h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comment-content {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.user-profile a {
+  color: #333;
+  text-decoration: none;
+}
+
+.user-profile a:hover {
+  color: #FF8C8C;
+}
+
+.sign-in-container {
+  background-color: #FFFFE8;
+  min-height: 100vh; /* ブラウザの表示領域全体に広がるように設定 */
 }
 
 .footer {
