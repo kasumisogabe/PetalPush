@@ -1,45 +1,45 @@
 <div class="feature-wrapper">
-<h1>PetalPushは花の共有アプリです</h1>
-<div class="feature-container">
-  <div class="petalpush-description">
-    <p>PetalPushとは、街や公園で咲く美しい花々を共有するためのアプリケーションです。</p>
+  <h1>PetalPushは花の共有アプリです</h1>
+
+  <div class="feature-container">
+    <p>PetalPushとは、街や公園で咲く花を共有するためのアプリケーションです。</p>
     <p>桜や紅葉、ひまわりやコスモスなど、さまざまな花の開花状況や花の名前を知ることができます。</p>
     <p>地図情報を元に、現在地周辺で咲いている花を検索することも可能です。</p>
     <p><%= link_to '今すぐPetalPushを使ってみる!', flowers_path, class: 'submit-button' %></p>
   </div>
-</div>
-<h2>機能の紹介</h2>
-  <div class="feature-container">
-    <div class="feature-title">花情報投稿機能</div>
-    <ul class="feature-list">
-      <li>美しい花の写真を撮影し、アプリに簡単にアップロード！</li>
-      <li>花の名前、詳細な説明、そして場所を共有できます。</li>
-      <li>共有された位置情報はGoogleマップ上で見ることができ、花の探検が楽しくなります。</li>
-      <li>投稿した花の情報は、他の花好きなユーザーと共有されます。</li>
-    </ul>
+
+  <h2>機能について</h2>
+  <div class="features-grid">
+    <div class="feature-container">
+      <div class="feature-title">花の投稿機能</div>
+      <ul class="feature-list">
+        <li>好きな花の写真を撮影し、アプリに簡単にアップロード！</li>
+        <li>投稿された花の情報はGoogleマップ上で見ることができ、花を探すのが楽しくなります。</li>
+        <li>投稿した花の情報は、他のユーザーにも共有されます。</li>
+      </ul>
+    </div>
+    <div class="feature-container">
+      <div class="feature-title">花の詳細機能</div>
+      <ul class="feature-list">
+        <li>他のユーザーが投稿した花の情報を、一覧画面で閲覧できます。</li>
+        <li>好みの花や特定の条件で、投稿された花の情報を検索できます。</li>
+      </ul>
+    </div>
+    <div class="feature-container">
+      <div class="feature-title">コメント機能</div>
+      <ul class="feature-list">
+        <li>投稿された花の情報に対して、感想や質問などのコメントを気軽に投稿できます。</li>
+        <li>コメントを通じて、他のユーザーとの交流が楽しめます。</li>
+      </ul>
+    </div>
+    <div class="feature-container">
+      <div class="feature-title">いいね機能</div>
+      <ul class="feature-list">
+        <li>心に響いた投稿を「お気に入り」をすることで、気に入った花を簡単に記録できます。</li>
+        <li>いいねした投稿はマイページでいつでも確認でき、花の思い出が蘇ります。</li>
+      </ul>
+    </div>
   </div>
-  <div class="feature-container">
-    <div class="feature-title">花情報閲覧機能</div>
-    <ul class="feature-list">
-      <li>他のユーザーが投稿した花の情報を、美しい一覧画面で閲覧できます。</li>
-      <li>好みの花や特定の条件で、投稿された花の情報を検索できます。</li>
-      <li>地図上で花の情報を探すことができ、自然散策がさらに楽しくなります。</li>
-    </ul>
-  </div>
-  <div class="feature-container">
-    <div class="feature-title">コメント機能</div>
-    <ul class="feature-list">
-      <li>投稿された花の情報に対して、感想や質問などのコメントを気軽に投稿できます。</li>
-      <li>コメントを通じて、他のユーザーとの交流が楽しめます。</li>
-    </ul>
-  </div>
-  <div class="feature-container">
-    <div class="feature-title">いいね機能</div>
-    <ul class="feature-list">
-      <li>心に響いた投稿に「いいね」をすることで、気に入った花を簡単に記録できます。</li>
-      <li>いいねした投稿はマイページでいつでも確認でき、花の思い出が蘇ります。</li>
-    </ul>
-  </div>
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-  <%= link_to 'ゲストログイン（管理者用）', users_guest_admin_sign_in_path, method: :post %>
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'custom-link' %>
+    <%= link_to 'ゲストログイン（管理者用）', users_guest_admin_sign_in_path, method: :post, class: 'custom-link' %>
 </div>
