@@ -129,24 +129,6 @@ ul {
   color: white;
 }
 
-// .grid-container {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-//   gap: 16px;
-//   grid-gap: 20px;
-//   padding: 20px;
-//   box-sizing: border-box;
-// }
-
-// /* 各画像コンテナ */
-// .grid-item {
-//   position: relative;
-//   background-color: #fff;
-//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//   border-radius: 5px;
-//   overflow: hidden;
-// }
-
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -401,7 +383,7 @@ ul {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  max-width: 300px;
+  max-width: 800px;
   padding: 20px;
 }
 
