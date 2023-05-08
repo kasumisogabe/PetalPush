@@ -8,7 +8,7 @@ class Flower < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true, length: { maximum: 300 }
-  validates :address, presence: true
+  validate :address_or_coordinates_present
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -19,5 +19,12 @@ class Flower < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     %w[flower]
+  end
+  private
+
+  def address_or_coordinates_present
+    if address.blank? && (latitude.blank? || longitude.blank?)
+      errors.add(:base, "住所または位置情報を入力してください。")
+    end
   end
 end

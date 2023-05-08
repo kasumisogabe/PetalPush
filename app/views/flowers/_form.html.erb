@@ -95,6 +95,8 @@
         });
       }
 
+      window.addEventListener("DOMContentLoaded", initMap);
+
       function getClickLatLng(latLng, map) {
         if (marker) {
           marker.setMap(null);
@@ -105,13 +107,15 @@
           map: map,
         });
 
+        console.log(marker);
+
         map.panTo(latLng);
 
         document.getElementById("lat").value = latLng.lat();
         document.getElementById("lng").value = latLng.lng();
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
       
     <div class="actions">
       <%= form.submit "登録", class: "submit-button" %>
