@@ -2,9 +2,10 @@ class User < ApplicationRecord
   has_many :flowers, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorite_flowers, through: :favorites, source: :flower, dependent: :destroy
-  has_one_attached :profile_image
   #userがお気に入りした花の情報を取得できる
+  has_many :favorite_flowers, through: :favorites, source: :flower, dependent: :destroy
+  
+  has_one_attached :profile_image
 
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
@@ -29,13 +30,12 @@ class User < ApplicationRecord
     end
   end
 
-    def self.guest_admin
-      find_or_create_by!(email: 'guest_admin@example.com') do |user|
-        user.password = user.password_confirmation = SecureRandom.urlsafe_base64
-        user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-        user.name = 'ゲスト管理者' # ここで名前を設定
-        user.admin = true
-        # 必要に応じて他の属性を設定
-      end
+  def self.guest_admin
+    find_or_create_by!(email: 'guest_admin@example.com') do |user|
+      user.password = user.password_confirmation = SecureRandom.urlsafe_base64
+      user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      user.name = 'ゲスト管理者' # ここで名前を設定
+      user.admin = true
     end
+  end
 end

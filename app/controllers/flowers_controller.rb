@@ -3,19 +3,24 @@ class FlowersController < ApplicationController
   before_action :authenticate_user!, only: %i[ new create edit update destroy ]
   before_action :ensure_correct_user, only: %i[ edit update destroy ]
 
-  # GET /flowers or /flowers.json
   def index
     @flowers = Flower.all
     @q = Flower.ransack(params[:q])
     @flowers = @q.result(distinct: true).order("created_at desc")
-    gon.flowers = @flowers
+    gon.flowers = @flowers.map do |flower|
+      {
+      id: flower.id,
+      name: flower.name,
+      latitude: flower.latitude,
+      longitude: flower.longitude,
+      image_url: rails_blob_url(flower.image)
+    }
+    end
   end
 
-  # GET /flowers/1 or /flowers/1.json
   def show
     @comments = @flower.comments
     @comment = @flower.comments.build
-    # @favorite = current_user.favorites.find_by(flower_id: @flower.id)
     if user_signed_in?
       @favorite = current_user.favorites.find_by(flower_id: @flower.id)
     else
@@ -23,16 +28,13 @@ class FlowersController < ApplicationController
     end
   end
 
-  # GET /flowers/new
   def new
     @flower = Flower.new
   end
 
-  # GET /flowers/1/edit
   def edit
   end
 
-  # POST /flowers or /flowers.json
   def create
     @flower = current_user.flowers.build(flower_params)
     return render :new if params[:back]
@@ -43,7 +45,6 @@ class FlowersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /flowers/1 or /flowers/1.json
   def update
     respond_to do |format|
       if @flower.update(flower_params)
@@ -56,7 +57,6 @@ class FlowersController < ApplicationController
     end
   end
 
-  # DELETE /flowers/1 or /flowers/1.json
   def destroy
     @flower.destroy
 
@@ -67,20 +67,19 @@ class FlowersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flower
-      @flower = Flower.find(params[:id])
-    end
+  
+  def set_flower
+    @flower = Flower.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def flower_params
-      params.require(:flower).permit(:name, :description, :image, :address, :latitude, :longitude)
-    end
+  def flower_params
+    params.require(:flower).permit(:name, :description, :image, :address, :latitude, :longitude)
+  end
 
-    def ensure_correct_user
-      @user = @flower.user
-      unless @user == current_user
-        redirect_to flowers_path, alert: "アクセス権限がありません。"
-      end
+  def ensure_correct_user
+    @user = @flower.user
+    unless @user == current_user
+      redirect_to flowers_path, alert: "アクセス権限がありません。"
     end
+  end
 end

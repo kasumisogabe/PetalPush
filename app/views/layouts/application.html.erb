@@ -10,6 +10,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= include_gon %>
+    <%= stylesheet_link_tag 'flowers' %>
+    <%= favicon_link_tag 'favicon.png' %>
   </head>
 
   <body>
@@ -22,8 +24,8 @@
               <%= link_to '管理者ページ', rails_admin_path %>
             <% end %>
           <% else %>
-          <%= link_to 'ログイン'.html_safe, new_user_session_path %>
-          <%= link_to 'サインアップ'.html_safe, new_user_registration_path %>
+          <%= link_to 'ログイン', new_user_session_path %>
+          <%= link_to 'サインアップ', new_user_registration_path %>
         <% end %>
       </div>
       <div class="header-center-link">

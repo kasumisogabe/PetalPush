@@ -22,10 +22,10 @@ gem 'dotenv-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem "gon"
-gem 'faker'
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -33,6 +33,10 @@ group :development, :test do
   gem 'rspec-rails', "~> 4.0.1"
   gem 'factory_bot_rails'
   gem 'rexml'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'faker'
 end
 
 group :development do
@@ -45,9 +49,6 @@ end
 
 group :test do
   gem 'capybara', '>= 3.26'
-  # gem 'selenium-webdriver', '>= 4.0.0.rc1'
-  gem 'webdrivers'
-  # gem 'capybara', '>= 2.15'
   gem 'webdrivers'
 end
 
