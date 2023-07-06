@@ -102,6 +102,46 @@
           marker.setMap(null);
         }
 
+      });
+    });
+  }
+
+  function getClickLatLng(latLng, map) {
+    if (marker) {
+      marker.setMap(null);
+    }
+
+    marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+    });
+
+    map.panTo(latLng);
+
+    document.getElementById("lat").value = latLng.lat();
+    document.getElementById("lng").value = latLng.lng();
+
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ location: latLng, region: 'JP' }, function (results, status) {
+      if (status === "OK") {
+        if (results[0]) {
+          const address_components = results[0].address_components;
+          const long_name = address_components.map(component => component.long_name);
+          document.getElementById("address").value = long_name.join(' ');
+        } else {
+          console.log("No results found");
+        }
+      } else {
+        console.log("Geocoder failed due to: " + status);
+      }
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+    
+  <div class="actions">
+    <%= form.submit "登録", class: "submit-button" %>
+
         marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -120,5 +160,6 @@
     <div class="actions">
       <%= form.submit "登録", class: "submit-button" %>
     </div>
+
   </div>
 <% end %>
